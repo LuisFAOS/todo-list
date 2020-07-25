@@ -1,0 +1,43 @@
+
+.inputsBox fieldset{
+    width:250px;
+    margin:auto;
+    padding:10px 10px 5px 10px;
+    border-radius: 4px 4px 0 0;
+    margin-bottom:10px;
+    border:1px solid gray;
+}
+.inputsBox fieldset legend{
+    text-align: start;
+    font-family: monospace;
+    font-weight: bold;
+    font-size: 16px;
+}
+.inputsBox fieldset input{
+    display: inline-block;
+    height:30px;
+}
+
+.inputsBox fieldset .box p{
+    margin:0;
+    padding:0;
+    color:gray;
+    font-size:10px;
+}
+.inputsBox fieldset .box{
+    display:inline-block;
+}
+
+.inputsBox fieldset .date{
+    width:150px;
+    margin:0;
+    margin-right:10px;
+}
+
+.inputsBox fieldset .timeInput{
+    width:2ch;
+    padding-right: 6px;
+    display: inline-block;
+    font-size: 15px;
+    margin:0 2px;
+}

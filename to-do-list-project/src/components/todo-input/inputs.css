@@ -1,0 +1,74 @@
+.descAct{
+    resize:none;
+    height:60px!important;
+}
+.inputsBox button.buttonAdd, button.buttonClose{
+    width:260px;
+    height:30px;
+    cursor: pointer;
+    background-color: #dc3545;
+    border-radius:4px;
+    border:none;
+    color:white;
+    font-size:25px;
+}
+
+.buttonClose{
+    margin-top:20px;
+    width:250px!important;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size:17px!important;
+}
+
+.inputsBox button.buttonAdd:hover,button.buttonClose:hover{
+    transition:0.3s;
+    background-color: #ad2c39;
+
+}
+.inputsBox button.buttonAdd:focus,button.buttonClose:focus{
+    outline:none;
+    background-color: #ad2c39;
+    box-shadow: 0 0 0 2pt #dc354671;
+}
+p.error{
+    font-size: 12px;
+    background:#dc35463b;
+    padding:5px;
+    margin-top: -1px;
+    border-radius:3px;
+    display:inline-block;
+    width:240px;
+}
+
+.BoxCalendar{
+    width: 100%;
+    height:100%;
+    background:rgba(0, 0, 0, 0.808);
+    position:absolute;
+    top:0;
+    z-index:1;
+    display:flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: center;
+}
+.BoxCalendar .calendar{
+    width:250px;
+    z-index:2;
+}
+.BoxCalendar .calendar button:focus{
+    background:#dc3545;
+}
+.react-calendar__tile--active{
+    background:#dc3545!important;
+}
+
+.borderError{
+    border-bottom: red!important;
+}
+
+@keyframes popUpClose{
+    20% {opacity: 1;}
+    95% {opacity: 0.9;}
+    100% {opacity: 0;}
+}
