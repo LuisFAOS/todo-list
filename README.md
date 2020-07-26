@@ -1,2 +1,3 @@
 # todo-list
 To-do para testar conhecimentos básicos no React. Terá conecção com o BD posteriormente...
+- Criado com Creact React App
