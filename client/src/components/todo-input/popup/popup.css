@@ -1,0 +1,43 @@
+
+.popUpAlertError{
+    position: absolute;
+    right:0;
+    width:300px;
+    height:75px;
+    border:1px solid gray;
+    border-right: none;
+    background-color: white;
+    top:40px;
+    display:flex;
+    opacity: 1;
+    /* animation:popUpClose 4s; */
+    flex-direction: row;
+    box-shadow: 0  1pt 2pt gray;
+}
+.popUpAlertError .ClosePopUp{
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    width: 80px !important;
+    padding:0;
+    font-size: 38px;
+    color:#dc3545;
+    background-color: white;
+    border:0;
+    border-right: 1px solid #dc3545;
+    cursor: pointer;
+}
+.ClosePopUp:focus{
+    outline: none;
+}
+
+.popUpAlertError p.txtError{
+    padding:0px 10px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+@keyframes popUpClose{
+    20% {opacity: 1;}
+    95% {opacity: 0.9;}
+    100% {opacity: 0;}
+}

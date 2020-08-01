@@ -1,3 +1,6 @@
-# todo-list
-To-do para testar conhecimentos básicos no React. Terá conecção com o BD posteriormente...
+﻿# todo-list
+Todo para testar conhecimentos básicos de React e Node...
 - Criado com Creact React App
+- Utilizei algumas features desnecessáriamente, fiquei com 
+guiça de trocar(Sequelize,BodyParser)
+- Como bd utilizei o MySQL
