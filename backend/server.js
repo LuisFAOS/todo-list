@@ -1,5 +1,5 @@
 const express = require('express');
-const conn = require('./database/connection')
+const conn = require('../database/connection')
 const bodyparser = require('body-parser')
 const {QueryTypes} = require('sequelize')
 
