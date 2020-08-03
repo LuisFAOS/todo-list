@@ -1,4 +1,3 @@
-
 .popUpAlertError{
     position: absolute;
     right:0;
@@ -6,6 +5,7 @@
     height:75px;
     border:1px solid gray;
     border-right: none;
+    color:black!important;
     background-color: white;
     top:40px;
     display:flex;

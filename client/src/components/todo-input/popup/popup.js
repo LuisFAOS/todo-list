@@ -5,11 +5,11 @@ const PopUp = (props)=> {
 
 
     useEffect(()=>{
-        const timer= setTimeout(props.clickedFunction,4000)
+        const timer= setTimeout(props.clickedFunction, 4000)
         return ()=>{
             clearTimeout(timer)
         }
-    },[props])
+    }, [props])
 
     return (<div className="popUpAlertError"> 
                 <button className="ClosePopUp" onClick={props.clickedFunction}>

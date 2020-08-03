@@ -1,15 +1,18 @@
 import React from 'react';
-import './card.css';
+import {ThemeContext} from '../../themes/themeContext'
+import {CardStyle, InputDate, InputName, InputDesc, ButtonRemove} from './style'
 
 export default function Card(props){
     return(
-        <div className="card">
-            <button className="remove" onClick={props.remove}>X</button>
-            <div>
-                <input className="name" value={props.name} readOnly/>
-                <input className="date" value={props.date} readOnly/>
-            </div>
-            <input className="description" value={props.desc} readOnly/>
-        </div>
+        <ThemeContext.Consumer>
+           {value=> <CardStyle>
+                        <div>
+                            <InputName value={props.name} readOnly/>
+                            <InputDate value={props.date} readOnly/>
+                            <ButtonRemove onClick={props.remove}>X</ButtonRemove>
+                        </div>
+                        <InputDesc value={props.desc} readOnly/>
+                    </CardStyle>}
+        </ThemeContext.Consumer>
     );
 }

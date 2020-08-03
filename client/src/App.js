@@ -1,20 +1,37 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import Input from './components/todo-input/input/input'
 import Inputs from './components/todo-input/inputs';
 import Card from './components/todo-output/card'
+import {ThemeContext, themes} from './themes/themeContext';
+import BtnChangeTheme from './components/ThemeSwitcher/btnChangeTheme'
+import TitleTodo from './components/titleTodo/titleTodo'
+import FuncsCard from './components/funcCard/funcsCard'
+import {ThemeProvider} from 'styled-components'
 
 export default function App() {
   const [lists, setList]=useState([])
 
   const [listsFiltered,setListsFiltered]=useState([])
 
-  const selectRef=useRef(null)
+  const [stateTheme,setStateTheme]=useState({theme:themes.light})
 
+  
+  
   useEffect(()=>{
     renderLists()
   },[]) 
   
+  const toggleTheme = () => {
+    setStateTheme(stateTheme => ({
+      theme:
+          stateTheme.theme === themes.dark
+          ? themes.light
+          : themes.dark,
+    }));
+    console.log(stateTheme.theme)
+  };
+
   const renderLists= async ()=>{
     const response = await fetch(`/list`)
     const body= await response.json()
@@ -72,35 +89,26 @@ export default function App() {
 
 
   return (
-    <div className="container">
-      <div className="presentation">
-        Welcome To
-        <p>A Begginer "To do List" </p>
-      </div>
-      <div className="Box1">
-        <p className="title">
-        Hello, Dev!<br/>
-        Optimize your time!!</p>
-        <Inputs send={(list) => addList(list)}/>
-      </div>
-      <div className="to-do-list">
-      {lists.length!==0 && 
-        <div>
-          <p className="titleList">Your List</p>
-          <Input placeholder="Filter a list..." class="searchList inputDefault" changed={(e) => filterLists(e.target.value)}/>
-          <label>Order by: </label>
-          <select className="filter" ref={selectRef} onChange={()=> selectFilter(selectRef.current.value)}>
-            <option>Default</option>
-            <option>Name</option>
-            <option>Date</option>
-          </select> 
+  <ThemeContext.Provider value={stateTheme.theme}>
+    <div className="container" style={{background:stateTheme.theme.background, color:stateTheme.theme.color}}> 
+        <BtnChangeTheme changeTheme={toggleTheme}/>
+        <TitleTodo children={(<Inputs send={(list) => addList(list)}/>)}/>
+        <div className="to-do-list">
+        {lists.length!==0 && 
+          <FuncsCard selectFilter={(value)=> selectFilter(value)} children={
+            <Input placeholder="Filter a list..." class="searchList inputDefault" changed={(e) => filterLists(e.target.value)}/>
+          }/>
+        }
+          {listsFiltered.map((valor) => 
+            (
+            <ThemeProvider theme={stateTheme.theme} >
+              <Card name={valor.name} date={(valor.date+(valor.time ? " - "+valor.time:""))}
+              desc={valor.description} key={valor.id_list} remove={()=>removeList(valor.id_list)}/>
+            </ThemeProvider>
+            ))}
         </div>
-      }
-        {listsFiltered.map((valor) => 
-          (<Card name={valor.name} date={(valor.date+(valor.time ? " - "+valor.time:""))}
-          desc={valor.description} key={valor.id_list} remove={()=>removeList(valor.id_list)}/>))}
       </div>
-    </div>
+    </ThemeContext.Provider>
   );
 }
 

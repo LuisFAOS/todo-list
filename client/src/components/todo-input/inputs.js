@@ -5,6 +5,7 @@ import BoxDateTime from './DateTime/DateTime'
 import PopUp from './popup/popup'
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
+import { ThemeContext } from '../../themes/themeContext';
 
 export default function Inputs(props){
 
@@ -51,7 +52,7 @@ export default function Inputs(props){
     }
 
     const setAdate=(value)=>{
-        let userDate=value.toLocaleDateString();
+        let userDate=value.toLocaleDateString("pt-br");
         let today=new Date().toLocaleDateString();
         let tomorrow=new Date();
         tomorrow.setDate(new Date().getDate()+1)
@@ -85,7 +86,7 @@ export default function Inputs(props){
 
     const setDescription= (description)=>{
         description=description.trim().length>0 ? description[0].toUpperCase() + description.slice(1).toLowerCase():"";
-        putInList(dataList.name,dataList.date,dataList.time,description)
+        putInList(dataList.name,dataList.date,dataList.time,description.trim())
     }
     
     const sendAndClearFields=()=>{
@@ -144,11 +145,15 @@ export default function Inputs(props){
             />
            
             {/* TEXTAREA TO DESCRIPTION */}
-            <textarea className="descAct inputDefault" placeholder="Describe your activity..." maxLength="60"  
-            onBlur={(event) => setDescription(event.target.value)} 
-            onChange={(event) => setValues([values[0],values[1],values[2],event.target.value,values[4]])} 
-            value={values[3]}/>
-            
+            <ThemeContext.Consumer>
+               {value=> <textarea className="descAct inputDefault" placeholder="Describe your activity..." maxLength="60"  
+                onBlur={(event) => setDescription(event.target.value)} 
+                style={{backgroundColor:value.color==='white' ? value.color:""}}
+                onChange={(event) => setValues([values[0],values[1],values[2],event.target.value,values[4]])} 
+                value={values[3]}/>}
+            </ThemeContext.Consumer>
+
+
             {/* ALERT WHEN SEND A INVALID VALUES */}
             {viewComponent[0] ? <div><p className="error">{values[4]}</p></div>:null}
 

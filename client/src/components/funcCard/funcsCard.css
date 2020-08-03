@@ -1,0 +1,24 @@
+
+.titleList{
+    font-size:22px;
+    margin-top:10px;
+    font-family: monospace;
+  }
+  .searchList{
+    margin-bottom:30px!important;
+  }
+  
+  select.filter{
+    margin:0 0 20px 0;
+    border:none;
+    font-size: 15px;
+    cursor: pointer;
+  }
+  
+  select.filter:focus{
+    outline:none;
+  }
+  
+  select.filter option:hover{
+    background-color: #dc3545!important;
+  }
